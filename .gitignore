@@ -1,0 +1,15 @@
+# Visual Studio Code - Workspace Settings
+.vscode/
+
+# Notes and TODOs
+*.txt
+
+# Python Environment
+venv/
+
+# Auto Generated
+__pycache__
+*.pyc
+
+# Bash Scripts
+*.sh
