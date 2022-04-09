@@ -1,0 +1,115 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+
+/* Custom Properties */
+:root {
+    --theme-background: hsl(0, 0%, 100%);
+    --theme-text: hsl(0, 0%, 0%);
+    --theme-success: hsl(152, 69%, 31%);
+    --theme-error: hsl(354, 70%, 54%);
+    --theme-warning: hsl(45, 100%, 51%);
+    --theme-info: hsl(190, 90%, 50%);
+    /* Primary Colors */
+    --primary: hsl(139, 66%, 49%);
+    --dark-violet: hsl(257, 27%, 26%);
+    /* Secondary Colors */
+    --gray: hsl(0, 0%, 93%);
+    --grayish-violet: hsl(257, 7%, 63%);
+    --dark-blue: hsl(255, 11%, 22%);
+    --darker-violet: hsl(260, 8%, 14%);
+}
+
+/* Global Styling */
+::placeholder {
+    color: var(--grayish-violet);
+}
+
+html {
+    font-size: 10px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1;
+    background-color: var(--gray);
+}
+
+.container {
+    margin: auto;
+    max-width: 1400px;
+    width: 94%;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1.6rem 3rem;
+    color: var(--theme-background);
+    background-color: var(--primary);
+    border-radius: 3rem;
+    cursor: pointer;
+    transition: box-shadow 0.1s ease, opacity 0.1s ease;
+}
+
+.btn:hover {
+    box-shadow: 0 2px 6px #00000040;
+}
+
+.btn:active {
+    box-shadow: none;
+    opacity: 0.6;
+}
+
+.error-text {
+    display: none;
+    margin-top: 5px;
+    margin-left: 2px;
+    color: var(--theme-error);
+    font-size: 1.6rem;
+}
+
+/* Elements Styling */
+#header {
+    background-color: var(--theme-background);
+}
+
+#navbar,
+#nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#navbar {
+    height: 10rem;
+}
+
+#hero-logo {
+    width: 13rem;
+}
+
+#nav {
+    gap: 2rem;
+}
+
+.link {
+    color: var(--grayish-violet);
+    transition: color 0.14s linear;
+}
+
+.link:hover {
+    color: var(--dark-violet);
+}
+
+/* Breakpoints */
+@media screen and (max-width: 460px) {
+    body {
+        font-size: 1.6rem;
+    }
+
+    #nav {
+        flex-direction: column;
+    }
+}
