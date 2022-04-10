@@ -72,9 +72,13 @@ body {
 
 /* Elements Styling */
 #header {
+    height: 100vh;
+    min-height: 80rem;
+    width: 100%;
     background-color: var(--theme-background);
 }
 
+/* Navigation */
 #navbar,
 #nav {
     display: flex;
@@ -103,7 +107,85 @@ body {
     color: var(--dark-violet);
 }
 
+/* Landing */
+#intro {
+    padding-bottom: 78px;
+    height: calc(100% - 10rem);
+    background-image: url('../images/landing-illustration.svg');
+    background-repeat: no-repeat;
+    background-position: calc(((100vw - 990px)/ 2) + 990px * .536) center;
+}
+
+.intro-wrapper {
+    height: 100%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-template-areas: 'intro-left intro-right';
+}
+
+.intro-left {
+    grid-area: intro-left;
+}
+
+.intro-right {
+    grid-area: intro-right;
+}
+
+.intro-title {
+    color: var(--dark-blue);
+    font-size: 8rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.intro-line {
+    font-size: 2.4rem;
+    color: var(--grayish-violet);
+    line-height: 1.5;
+}
+
+.intro-btn {
+    margin-top: 2.8rem;
+    padding: 1.4rem 3rem;
+    font-size: 2rem;
+}
+
 /* Breakpoints */
+@media screen and (max-width: 1020px) {
+    #header {
+        min-height: 98rem;
+    }
+
+    #intro {
+        background-size: 650px;
+        background-position: center 0;
+    }
+
+    .intro-wrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-areas: 'intro-right'
+            'intro-left';
+        text-align: center;
+    }
+
+    .intro-left {
+        margin-inline: auto;
+        max-width: 600px;
+    }
+
+    .intro-title {
+        font-size: 5.6rem;
+    }
+
+    .intro-line {
+        margin-top: 1rem;
+        font-size: 2rem;
+    }
+}
+
 @media screen and (max-width: 460px) {
     body {
         font-size: 1.6rem;
@@ -111,5 +193,17 @@ body {
 
     #nav {
         flex-direction: column;
+    }
+
+    .intro-title {
+        font-size: 4.4rem;
+    }
+
+    .intro-line {
+        font-size: 1.8rem;
+    }
+
+    .intro-btn {
+        font-size: 1.6rem;
     }
 }
