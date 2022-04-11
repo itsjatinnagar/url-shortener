@@ -9,6 +9,8 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
     <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- My Styles -->
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
@@ -36,6 +38,20 @@
                 </div>
             </section>
         </header>
+
+        <section id="get-started" class="main">
+            <form id="url-form" class="container form url-form" method="post">
+                <div id="field-url" class="field-wrapper">
+                    <div class="field-group">
+                        <label for="url" class="form-icon"><i class="fa-solid fa-link"></i></label>
+                        <input class="input url-input" type="url" name="url" id="url"
+                            placeholder="Shorten a link here..." maxlength="2000" required>
+                    </div>
+                    <span class="error-text"></span>
+                </div>
+                <input class="btn" type="submit" value="Shorten It!">
+            </form>
+        </section>
     </main>
 </body>
 
