@@ -53,6 +53,13 @@ body {
     transition: box-shadow 0.1s ease, background-color 0.1s ease;
 }
 
+.btn:disabled,
+.btn:hover:disabled,
+.btn:active:disabled {
+    background-color: var(--grayish-violet);
+    box-shadow: none;
+}
+
 .btn:hover {
     box-shadow: 0 2px 6px #00000040;
 }
@@ -218,6 +225,7 @@ body {
 .input {
     width: 100%;
     font-family: 'Poppins', sans-serif;
+    font-weight: 500;
     background-color: var(--theme-background);
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
@@ -448,6 +456,11 @@ body {
 
     #nav {
         flex-direction: column;
+        gap: 1rem;
+    }
+
+    #nav .btn {
+        padding: 1rem 3rem;
     }
 
     .intro-title {
