@@ -7,21 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MiniUrll</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <!-- My Scripts -->
-    <script src="./assets/js/script.js" defer></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
     <!-- My Styles -->
-    <link rel="stylesheet" href="./assets/css/reset.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
     <main id="hero">
         <header id="header">
             <nav id="navbar" class="container navbar">
-                <a href="#"><img src="./assets/images/logo.svg" alt="miniurll logo  " id="hero-logo"></a>
+                <a href="#"><img src="{{ url_for('static', filename='images/logo.svg') }}" alt="shorturl logo  "
+                        id="hero-logo"></a>
                 <ul id="nav" class="nav">
                     <li><a href="#get-started" class="link">Login</a></li>
                     <li><a href="#get-started" class="btn">Sign Up</a></li>
@@ -70,21 +71,24 @@
             <p>Track how your links are performing across the web with our advanced statistics dashboard.</p>
             <div class="cards-wrapper">
                 <div class="card card-1">
-                    <div class="image-wrapper"><img src="./assets/images/icon-brand-recognition.svg"
+                    <div class="image-wrapper"><img
+                            src="{{ url_for('static', filename='images/icon-brand-recognition.svg') }}"
                             alt="brand recognition logo"></div>
                     <h4>Brand Recognition</h4>
                     <p>Boost your brand recognition with each click. Generic links don’t mean a thing. Branded links
                         help instil confidence in your content.</p>
                 </div>
                 <div class="card card-2">
-                    <div class="image-wrapper"><img src="./assets/images/icon-detailed-records.svg"
+                    <div class="image-wrapper"><img
+                            src="{{ url_for('static', filename='images/icon-detailed-records.svg') }}"
                             alt="detailed records logo"></div>
                     <h4>Detailed Records</h4>
                     <p>Gain insights into who is clicking your links. Knowing when and where people engage with your
                         content helps inform better decisions.</p>
                 </div>
                 <div class="card card-3">
-                    <div class="image-wrapper"><img src="./assets/images/icon-fully-customizable.svg"
+                    <div class="image-wrapper"><img
+                            src="{{ url_for('static', filename='images/icon-fully-customizable.svg') }}"
                             alt="fully customizable logo"></div>
                     <h4>Fully Customizable</h4>
                     <p>Improve brand awareness and content discoverability through customizable links, supercharging
