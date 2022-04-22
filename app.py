@@ -17,6 +17,6 @@ def shorten():
     validate = validateURL(long_url)
     if validate is None:
         short_code = generate_short_code()
-        return jsonify(status=200, message='OK')
+        return jsonify(status=200, message=short_code)
     else:
         return jsonify(status=400, message=validate)
