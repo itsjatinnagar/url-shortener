@@ -32,3 +32,25 @@ def create(short_code, long_url, datetime):
 
     cursor.close()
     conn.close()
+
+
+def check_code(short_code):
+    conn = connect()
+    if conn is None:
+        return False
+
+    cursor = conn.cursor()
+    query = 'SELECT * FROM url where short_code = %s'
+    values = (short_code,)
+    try:
+        cursor.execute(query, values)
+    except (Exception, psycopg2.Error) as error:
+        print(f'Error: {error}')
+        conn.close()
+        return False
+
+    queryResult = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+    return True if len(queryResult) == 0 else False
