@@ -37,7 +37,7 @@ def create(short_code, long_url, datetime):
 def check_code(short_code):
     conn = connect()
     if conn is None:
-        return False
+        return None
 
     cursor = conn.cursor()
     query = 'SELECT * FROM url where short_code = %s'

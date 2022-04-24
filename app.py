@@ -19,11 +19,14 @@ def shorten():
     validate = validateURL(long_url)
     if validate is None:
         short_code = generate_short_code()
-        date = datetime.now().strftime('%d%m%Y%H%M%S')
-        # URL Insert
-        isSuccess = create(short_code, long_url, date)
+        if short_code is None:
+            isSuccess = False
+        else:
+            date = datetime.now().strftime('%d%m%Y%H%M%S')
+            # URL Insert
+            isSuccess = create(short_code, long_url, date)
         if isSuccess is False:
-            return jsonify(status=500, message='Some Error Occurred')
+            return jsonify(status=500, message='Something Went Wrong')
         else:
             return jsonify(status=200, id=short_code)
     else:

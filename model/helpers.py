@@ -11,6 +11,9 @@ def generate_short_code():
     short_code = ''
     while True:
         short_code = ''.join(random.choices(allowed, k=6))
-        if check_code(short_code):
+        checkResult = check_code(short_code)
+        if checkResult is True:
             break
+        elif checkResult is None:
+            return None
     return short_code
