@@ -1,8 +1,8 @@
 from datetime import datetime
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, redirect, render_template, request
 
 from model.helpers import generate_short_code
-from model.sql import create
+from model.sql import create, read_long_url
 from model.validators import validateURL
 
 app = Flask(__name__, static_folder='assets')
@@ -31,3 +31,12 @@ def shorten():
             return jsonify(status=200, id=short_code)
     else:
         return jsonify(status=400, message=validate)
+
+
+@app.route('/<short_code>')
+def redirection(short_code):
+    long_url = read_long_url(short_code)
+    if long_url is None:
+        return redirect('/')
+
+    return redirect(long_url[0])
