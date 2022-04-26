@@ -58,13 +58,17 @@
     </main>
 
     <main class="container main-section">
+        {% if url_list %}
         <section id="links-wrapper">
+            {% for record in url_list %}
             <div class="link-wrapper">
-                <p class="long-link">https://drive.google.com/drive/folders/131Nm91QEyJe_wIptj_8N0AWJTloL8_HS</p>
-                <p class="short-link">https://shorturl.ga/YE86NC</p>
+                <p class="long-link">{{record[0]}}</p>
+                <p class="short-link">{{host+record[1]}}</p>
                 <button id="copy-btn" class="btn copy-btn">Copy</button>
             </div>
+            {% endfor %}
         </section>
+        {% endif %}
 
         <section id="features">
             <h2>Advanced Statistics</h2>

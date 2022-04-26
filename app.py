@@ -2,7 +2,7 @@ from datetime import datetime
 from flask import Flask, jsonify, redirect, render_template, request
 
 from model.helpers import generate_short_code
-from model.sql import create, read_long_url
+from model.sql import create, read_all, read_long_url
 from model.validators import validateURL
 
 app = Flask(__name__, static_folder='assets')
@@ -10,7 +10,12 @@ app = Flask(__name__, static_folder='assets')
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    identifiers = request.cookies.get('identifiers')
+    if identifiers is None:
+        return render_template('index.html')
+    else:
+        records = read_all(identifiers.split('-'))
+        return render_template('index.html', url_list=records, host=request.host_url)
 
 
 @app.route('/shorten', methods=['POST'])

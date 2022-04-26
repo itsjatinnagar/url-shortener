@@ -77,3 +77,26 @@ def read_long_url(short_code):
     conn.close()
 
     return queryResult
+
+
+def read_all(list_short_codes):
+    conn = connect()
+    if conn is None:
+        return False
+
+    cursor = conn.cursor()
+    query = 'SELECT long_url,short_code FROM url where short_code = ANY (%s) ORDER BY creation DESC'
+    values = (list_short_codes,)
+    try:
+        cursor.execute(query, values)
+    except (Exception, psycopg2.Error) as error:
+        print(f'Error: {error}')
+        conn.close()
+        return False
+
+    queryResult = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return queryResult
