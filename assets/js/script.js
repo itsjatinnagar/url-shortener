@@ -18,6 +18,24 @@ shortenForm.addEventListener("submit", (e) => {
         .catch((error) => console.error("Error: " + error));
 });
 
+const setCookie = (cName, cValue, expires) => {
+    const date = new Date();
+    date.setTime(date.getTime() + expires * 24 * 60 * 60 * 1000);
+    expires = "expires=" + date.toUTCString();
+    document.cookie = cName + "=" + cValue + "; " + expires;
+};
+
+const getCookie = (cName) => {
+    const name = cName + "=";
+    const cDecoded = decodeURIComponent(document.cookie);
+    const cArr = cDecoded.split("; ");
+    let res;
+    cArr.forEach((val) => {
+        if (val.indexOf(name) === 0) res = val.substring(name.length);
+    });
+    return res;
+};
+
 // Set Current Year in Copyright Footer
 const setFooter = () => {
     const element = document.getElementById("currentYear");
