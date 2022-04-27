@@ -36,6 +36,20 @@ const getCookie = (cName) => {
     return res;
 };
 
+const popupToggle = (className, imageSrc, message) => {
+    popup.classList.add(className);
+    popupIcon.children[0].setAttribute("src", imageSrc);
+    popupMessage.textContent = message;
+
+    setTimeout(() => {
+        popup.classList.remove(className);
+        popup.addEventListener("transitionend", () => {
+            popupIcon.children[0].removeAttribute("src");
+            popupMessage.textContent = "";
+        });
+    }, 4000);
+};
+
 // Set Current Year in Copyright Footer
 const setFooter = () => {
     const element = document.getElementById("currentYear");
