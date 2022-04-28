@@ -1,8 +1,10 @@
-const popup = document.getElementById("popup"),
+const linkWrappers = document.getElementsByClassName("link-wrapper"),
+    popup = document.getElementById("popup"),
     popupIcon = document.querySelector("#popup #icon"),
     popupMessage = document.querySelector("#popup #message"),
     urlFieldWrapper = document.getElementById("field-url"),
     urlInput = document.getElementById("url"),
+    shortenBtn = document.getElementById("submit-btn"),
     shortenForm = document.getElementById("url-form");
 
 const checkResponse = (response) => {
@@ -42,6 +44,7 @@ const checkResponse = (response) => {
 shortenForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const request = { long_url: urlInput.value };
+    shortenBtn.setAttribute("disabled", "true");
 
     fetch("/shorten", {
         method: "POST",
@@ -86,6 +89,22 @@ const popupToggle = (className, imageSrc, message) => {
         });
     }, 4000);
 };
+
+for (const wrapper of linkWrappers) {
+    // Copy: Short url to Clipboard
+    const copyBtn = wrapper.children[2];
+    copyBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(wrapper.children[1].innerText);
+
+        copyBtn.innerText = "Copied!";
+        copyBtn.classList.add("active");
+
+        setTimeout(() => {
+            copyBtn.innerText = "Copy";
+            copyBtn.classList.remove("active");
+        }, 3000);
+    });
+}
 
 // Set Current Year in Copyright Footer
 const setFooter = () => {
