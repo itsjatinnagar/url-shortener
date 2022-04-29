@@ -1,6 +1,6 @@
 const linkWrappers = document.getElementsByClassName("link-wrapper"),
     popup = document.getElementById("popup"),
-    popupIcon = document.querySelector("#popup #icon"),
+    popupIcon = document.querySelector("#popup #icon i"),
     popupMessage = document.querySelector("#popup #message"),
     urlFieldWrapper = document.getElementById("field-url"),
     urlInput = document.getElementById("url"),
@@ -17,11 +17,7 @@ const checkResponse = (response) => {
         }
         setCookie("identifiers", result, 7);
 
-        popupToggle(
-            "success",
-            "/assets/images/icons/icon-check.svg",
-            response.message
-        );
+        popupToggle("success", "fa-circle-check", response.message);
 
         setTimeout(() => window.location.reload(), 4000);
     } else if (response.status === 400) {
@@ -32,11 +28,7 @@ const checkResponse = (response) => {
             urlFieldWrapper.children[1].textContent = "";
         }, 4000);
     } else {
-        popupToggle(
-            "error",
-            "/assets/images/icons/icon-error.svg",
-            response.message
-        );
+        popupToggle("error", "fa-circle-exclamation", response.message);
     }
 };
 
@@ -76,15 +68,15 @@ const getCookie = (cName) => {
     return res;
 };
 
-const popupToggle = (className, imageSrc, message) => {
+const popupToggle = (className, iconClass, message) => {
     popup.classList.add(className);
-    popupIcon.children[0].setAttribute("src", imageSrc);
+    popupIcon.classList.add(iconClass);
     popupMessage.textContent = message;
 
     setTimeout(() => {
         popup.classList.remove(className);
         popup.addEventListener("transitionend", () => {
-            popupIcon.children[0].removeAttribute("src");
+            popupIcon.classList.remove(iconClass);
             popupMessage.textContent = "";
         });
     }, 4000);

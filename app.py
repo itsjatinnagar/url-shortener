@@ -20,7 +20,7 @@ def index():
 
 @app.route('/shorten', methods=['POST'])
 def shorten():
-    long_url = request.json['long_url']
+    long_url = request.json['long_url'].strip()
     validate = validateURL(long_url)
     if validate is None:
         short_code = generate_short_code()
@@ -33,7 +33,7 @@ def shorten():
         if isSuccess is False:
             return jsonify(status=500, message='Something Went Wrong')
         else:
-            return jsonify(status=200, id=short_code)
+            return jsonify(status=200, message='URL Shortened Successfully', id=short_code)
     else:
         return jsonify(status=400, message=validate)
 

@@ -94,16 +94,19 @@ body {
     position: fixed;
     top: 2rem;
     left: 50%;
-    transform: translateX(-50%) translateY(-100%) scale(0.4);
+    transform: translateX(-50%) translateY(-200%) scale(0.4);
     padding: 2rem;
+    max-width: max-content;
     display: flex;
     gap: 2rem;
     align-items: center;
-    justify-content: space-between;
-    background-color: var(--theme-background);
+    justify-content: center;
+    background-color: transparent;
     border: 4px solid var(--theme-background);
     border-radius: 3rem;
-    transition: 0.4s ease-in-out;
+    transition: transform 0.4s ease-in-out,
+        background-color 0.4s ease-in-out,
+        border-color 0.4s ease-in-out;
 }
 
 .popup.success {
@@ -118,9 +121,19 @@ body {
     border-color: var(--theme-error);
 }
 
-.popup #icon img {
-    height: 5rem;
-    width: auto;
+.popup.success #icon i {
+    color: var(--theme-success);
+}
+
+.popup.error #icon i {
+    color: var(--theme-error);
+}
+
+.popup #icon i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
 }
 
 .popup #message {

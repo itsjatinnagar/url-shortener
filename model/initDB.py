@@ -1,4 +1,4 @@
-from model.sql import connect
+from sql import connect
 
 
 conn = connect()
