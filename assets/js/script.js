@@ -27,8 +27,10 @@ const checkResponse = (response) => {
             urlFieldWrapper.classList.remove("error");
             urlFieldWrapper.children[1].textContent = "";
         }, 4000);
+        shortenBtn.removeAttribute("disabled");
     } else {
         popupToggle("error", "fa-circle-exclamation", response.message);
+        shortenBtn.removeAttribute("disabled");
     }
 };
 
