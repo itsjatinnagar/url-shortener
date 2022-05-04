@@ -27,7 +27,7 @@ def shorten():
         if short_code is None:
             isSuccess = False
         else:
-            date = datetime.now().strftime('%d%m%Y%H%M%S')
+            date = datetime.now().strftime('%d-%m-%Y %H:%M:%S')
             # URL Insert
             isSuccess = create(short_code, long_url, date)
         if isSuccess is False:
