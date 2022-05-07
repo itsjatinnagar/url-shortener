@@ -23,7 +23,6 @@
             <nav id="navbar" class="container navbar">
                 <a href="#"><img src="./assets/images/logo.svg" alt="miniurll logo  " id="hero-logo"></a>
                 <ul id="nav" class="nav">
-                    <li><a href="#get-started" class="link">Login</a></li>
                     <li><a href="#get-started" class="btn">Sign Up</a></li>
                 </ul>
             </nav>
@@ -52,6 +51,26 @@
                     <span class="error-text"></span>
                 </div>
                 <input id="submit-btn" class="btn" type="submit" value="Shorten It!">
+            </form>
+
+            <form id="login-form" class="container form login-form" method="post">
+                <div id="field-email" class="field-wrapper">
+                    <div class="field-group">
+                        <label for="email" class="form-icon"><i class="fa-solid fa-envelope"></i></label>
+                        <input class="input email-input" type="email" name="email" id="email"
+                            placeholder="Email Address" required>
+                    </div>
+                    <span class="error-text"></span>
+                </div>
+                <div style="display: none;" id="field-code" class="field-wrapper">
+                    <div class="field-group">
+                        <label for="code" class="form-icon"><i class="fa-solid fa-lock"></i></label>
+                        <input class="input code-input" type="text" name="code" id="code" placeholder="Type the code"
+                            minlength="6" maxlength="6">
+                    </div>
+                    <span class="error-text"></span>
+                </div>
+                <input id="submit-btn" class="btn" type="submit" value="Send Code">
             </form>
         </section>
     </main>
