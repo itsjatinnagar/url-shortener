@@ -1,7 +1,7 @@
 import string
 import random
 
-from model.sql import check_code
+from sql import check_code
 
 
 def generate_short_code():
@@ -17,3 +17,7 @@ def generate_short_code():
         elif checkResult is None:
             return None
     return short_code
+
+
+def generate_auth_code():
+    return ''.join(random.choices(string.digits, k=6))
