@@ -14,14 +14,34 @@ def connect():
         print(f'Error: {error}')
 
 
-def create(short_code, long_url, datetime):
+def insertUser(email):
     conn = connect()
     if conn is None:
         return False
 
     cursor = conn.cursor()
-    query = 'INSERT INTO url VALUES (%s, %s, %s)'
-    values = (short_code, long_url, datetime,)
+    query = 'INSERT INTO users (email) VALUES (%s)'
+    values = (email,)
+    try:
+        cursor.execute(query, values)
+        conn.commit()
+    except (Exception, psycopg2.Error) as error:
+        print(f'Error: {error}')
+        conn.close()
+        return False
+
+    cursor.close()
+    conn.close()
+
+
+def insertURL(uid, short_code, long_url, datetime):
+    conn = connect()
+    if conn is None:
+        return False
+
+    cursor = conn.cursor()
+    query = 'INSERT INTO url VALUES (%s, %s, %s, %s)'
+    values = (uid, short_code, long_url, datetime,)
     try:
         cursor.execute(query, values)
         conn.commit()
@@ -56,6 +76,28 @@ def check_code(short_code):
     return True if len(queryResult) == 0 else False
 
 
+def read_user_id(email):
+    conn = connect()
+    if conn is None:
+        return False
+
+    cursor = conn.cursor()
+    query = 'SELECT id FROM users WHERE email = %s'
+    values = (email,)
+    try:
+        cursor.execute(query, values)
+    except (Exception, psycopg2.Error) as error:
+        print(f'Error: {error}')
+        conn.close()
+        return False
+
+    queryResult = cursor.fetchone()
+
+    cursor.close()
+    conn.close()
+    return queryResult
+
+
 def read_long_url(short_code):
     conn = connect()
     if conn is None:
@@ -79,14 +121,14 @@ def read_long_url(short_code):
     return queryResult
 
 
-def read_all(list_short_codes):
+def read_all(uid):
     conn = connect()
     if conn is None:
         return False
 
     cursor = conn.cursor()
-    query = 'SELECT long_url,short_code FROM url where short_code = ANY (%s) ORDER BY creation DESC'
-    values = (list_short_codes,)
+    query = 'SELECT long_url,short_code FROM url where uid = %s ORDER BY expiration DESC'
+    values = (uid,)
     try:
         cursor.execute(query, values)
     except (Exception, psycopg2.Error) as error:
