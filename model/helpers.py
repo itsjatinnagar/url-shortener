@@ -4,6 +4,8 @@ import smtplib
 import string
 import random
 
+from flask import session
+
 from model.sql import check_code
 
 

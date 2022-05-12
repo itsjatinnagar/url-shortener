@@ -1,5 +1,22 @@
 # CHANGE LOGS
 
+## VERSION 2.0 (2022-05-12)
+
+### Added
+
+-   Passwordless Login functionality
+-   Showing form based upon user authentication.
+
+### Changed
+
+-   Database Schema
+-   Storing user information on server.
+-   Accessing shortened urls using user information.
+
+### Removed
+
+-   Using cookies for storing short_codes.
+
 ## VERSION 1.2 (2022-05-04)
 
 ### Fixed

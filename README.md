@@ -4,10 +4,9 @@
 
 MiniUrll is a Web Application for shortening URLs.
 
-**Version 1.0**
-
+-   _Single Page Application_ with most of the functionalies that a URL shortener.
 -   _FetchAPI_ for requesting the server.
--   Browser _Cookies_ for storing and remembering information about urls that user shortened.
+-   _Passwordless_ login system.
 -   _JSON_ for sending requests and responses to-and-fro server.
 
 ### Built with
@@ -21,10 +20,6 @@ MiniUrll is a Web Application for shortening URLs.
 ### Screenshots
 
 ![Desktop Preview](./screenshots/desktop_preview.png)
-
-![Tablet Preview](./screenshots/tablet_preview.png)
-
-![Mobile Preview](./screenshots/mobile_preview.png)
 
 ### Live Demo
 

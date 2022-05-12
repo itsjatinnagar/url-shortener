@@ -11,3 +11,22 @@ def validateURL(long_url):
         return 'It is not a valid URL'
 
     return None
+
+
+def validateEmail(email):
+    if len(email) <= 0:
+        return 'Please, provide your Email'
+    expression = '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
+    if re.search(expression, email) is None:
+        return 'It is not a valid Email'
+
+    return None
+
+
+def validateAuthCode(user_input, auth_code):
+    if len(user_input) <= 0:
+        return 'Please, enter the code sent to you'
+    elif user_input != auth_code:
+        return 'Invalid sign in code'
+
+    return None

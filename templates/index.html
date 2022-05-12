@@ -24,7 +24,11 @@
                 <a href="#"><img src="{{ url_for('static', filename='images/logo.svg') }}" alt="shorturl logo  "
                         id="hero-logo"></a>
                 <ul id="nav" class="nav">
+                    {% if isAuth %}
+                    <li><a href="/logout" class="link">Logout</a></li>
+                    {% else %}
                     <li><a href="#get-started" class="btn">Sign In</a></li>
+                    {% endif %}
                 </ul>
             </nav>
 
@@ -42,7 +46,8 @@
         </header>
 
         <section id="get-started" class="main">
-            <form id="url-form" class="container form url-form" method="post">
+            {% if isAuth %}
+            <form id="form" class="container form url-form" method="post">
                 <div id="field-url" class="field-wrapper">
                     <div class="field-group">
                         <label for="url" class="form-icon"><i class="fa-solid fa-link"></i></label>
@@ -51,10 +56,10 @@
                     </div>
                     <span class="error-text"></span>
                 </div>
-                <input id="submit-btn" class="btn" type="submit" value="Shorten It!">
+                <input id="submit-btn" class="btn shorten-btn" type="submit" value="Shorten It!">
             </form>
-
-            <form id="login-form" class="container form login-form" method="post">
+            {% else %}
+            <form id="form" class="container form login-form" method="post">
                 <div id="field-email" class="field-wrapper">
                     <div class="field-group">
                         <label for="email" class="form-icon"><i class="fa-solid fa-envelope"></i></label>
@@ -71,13 +76,13 @@
                     </div>
                     <span class="error-text"></span>
                 </div>
-                <input id="submit-btn" class="btn" type="submit" value="Send Code">
+                <input id="submit-btn" class="btn send-code-btn" type="submit" value="Send Code">
             </form>
+            {% endif %}
         </section>
     </main>
 
     <main class="container main-section">
-        {% if url_list %}
         <section id="links-wrapper">
             {% for record in url_list %}
             <div class="link-wrapper">
@@ -87,7 +92,6 @@
             </div>
             {% endfor %}
         </section>
-        {% endif %}
 
         <section id="features">
             <h2>Advanced Statistics</h2>
