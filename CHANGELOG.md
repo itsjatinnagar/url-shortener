@@ -1,5 +1,11 @@
 # CHANGE LOGS
 
+## Version 2.1 (2022-05-14)
+
+### Fixed
+
+-   Issue [#4](https://github.com/itsjatinnagar/url-shortener/issues/4)
+
 ## VERSION 2.0 (2022-05-12)
 
 ### Added
