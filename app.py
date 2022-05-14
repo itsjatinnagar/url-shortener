@@ -1,5 +1,5 @@
 from datetime import datetime
-import secrets
+import os
 from flask import Flask, jsonify, redirect, render_template, request, session, url_for
 
 from model.helpers import email_auth_code, generate_auth_code, generate_short_code
@@ -7,7 +7,7 @@ from model.sql import insertURL, insertUser, read_all, read_long_url, read_user_
 from model.validators import validateAuthCode, validateEmail, validateURL
 
 app = Flask(__name__, static_folder='assets')
-app.secret_key = secrets.token_hex(16)
+app.secret_key = os.environ['SESSION_KEY']
 
 
 @app.route('/')
