@@ -23,7 +23,7 @@
             <nav id="navbar" class="container navbar">
                 <a href="#"><img src="./assets/images/logo.svg" alt="miniurll logo  " id="hero-logo"></a>
                 <ul id="nav" class="nav">
-                    <li><a href="#get-started" class="btn">Sign Up</a></li>
+                    <li><a href="#get-started" class="btn">Sign In</a></li>
                 </ul>
             </nav>
 
@@ -41,7 +41,7 @@
         </header>
 
         <section id="get-started" class="main">
-            <form id="url-form" class="container form url-form" method="post">
+            <form id="form" class="container form url-form" method="post">
                 <div id="field-url" class="field-wrapper">
                     <div class="field-group">
                         <label for="url" class="form-icon"><i class="fa-solid fa-link"></i></label>
@@ -50,10 +50,10 @@
                     </div>
                     <span class="error-text"></span>
                 </div>
-                <input id="submit-btn" class="btn" type="submit" value="Shorten It!">
+                <input id="submit-btn" class="btn shorten-btn" type="submit" value="Shorten It!">
             </form>
 
-            <form id="login-form" class="container form login-form" method="post">
+            <form id="form" class="container form login-form" method="post">
                 <div id="field-email" class="field-wrapper">
                     <div class="field-group">
                         <label for="email" class="form-icon"><i class="fa-solid fa-envelope"></i></label>
@@ -70,7 +70,7 @@
                     </div>
                     <span class="error-text"></span>
                 </div>
-                <input id="submit-btn" class="btn" type="submit" value="Send Code">
+                <input id="submit-btn" class="btn send-code-btn" type="submit" value="Send Code">
             </form>
         </section>
     </main>
@@ -121,8 +121,8 @@
         <p class="copyright">&copy; <span id="currentYear">2022</span> MiniUrll</p>
     </footer>
 
-    <div id="popup" class="popup">
-        <span id="icon"><img src="" alt="close popup"></span>
+    <div id="popup" class="container popup">
+        <span id="icon"><i class="fa-solid"></i></span>
         <p id="message"></p>
     </div>
 </body>
