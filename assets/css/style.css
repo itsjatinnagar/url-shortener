@@ -358,14 +358,14 @@ body {
 
 .cards-wrapper {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
     gap: 3rem;
+    height: max-content;
 }
 
 .card {
     position: relative;
-    height: 100%;
     max-width: 50rem;
     padding: 3.6rem;
     background-color: var(--theme-background);
