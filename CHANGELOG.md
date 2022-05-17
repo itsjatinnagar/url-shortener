@@ -1,5 +1,11 @@
 # CHANGE LOGS
 
+## VERSION 2.2 (2022-05-17)
+
+### Fixed
+
+-   Unequal heights of the Feature Card
+
 ## Version 2.1 (2022-05-14)
 
 ### Fixed
