@@ -6,7 +6,7 @@
 
 -   Unequal heights of the Feature Card
 
-## Version 2.1 (2022-05-14)
+## VERSION 2.1 (2022-05-14)
 
 ### Fixed
 
