@@ -112,7 +112,6 @@ form.addEventListener("submit", async (e) => {
         let response = await fetchRequest("/login", {
             code: codeInput.value,
         });
-        isCodeSent = false;
         isAuthenticated = checkResponse(response, codeFieldWrapper);
     } else if (submitBtnClasses.contains("shorten-btn")) {
         let response = await fetchRequest("/shorten", {
@@ -122,7 +121,6 @@ form.addEventListener("submit", async (e) => {
             long_url: response.long_url,
             short_url: response.short_url,
         };
-        isAuthenticated = false;
         isShortened = checkResponse(response, urlFieldWrapper);
     } else {
         console.error(`Submit Btn Classes: ${submitBtnClasses}`);
