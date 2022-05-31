@@ -64,7 +64,7 @@ const createCardElement = (long_url, short_url) => {
     paraLongUrl.innerText = long_url;
     const paraShortUrl = document.createElement("p");
     paraShortUrl.classList.add("short-link");
-    paraShortUrl.innerText = window.location.href + short_url;
+    paraShortUrl.innerText = window.location.origin + "/" + short_url;
     const btn = document.createElement("button");
     btn.classList.add(...["btn", "copy-btn"]);
     btn.innerText = "Copy";
