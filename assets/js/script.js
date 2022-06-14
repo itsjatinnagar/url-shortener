@@ -157,4 +157,5 @@ const setFooter = () => {
 
 window.addEventListener("DOMContentLoaded", () => {
     setFooter();
+    copyToClipboard();
 });
