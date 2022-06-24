@@ -40,7 +40,7 @@ def insertURL(uid, short_code, long_url, datetime):
         return False
 
     cursor = conn.cursor()
-    query = 'INSERT INTO url VALUES (%s, %s, %s, %s)'
+    query = 'INSERT INTO url (uid,short_code,long_url,created_on) VALUES (%s, %s, %s, %s)'
     values = (uid, short_code, long_url, datetime,)
     try:
         cursor.execute(query, values)
@@ -98,13 +98,34 @@ def read_user_id(email):
     return queryResult
 
 
+def updateClickCount(short_code, clickCount):
+    conn = connect()
+    if conn is None:
+        return False
+
+    cursor = conn.cursor()
+    query = 'UPDATE url SET click = %s WHERE short_code = %s'
+    values = (clickCount+1, short_code,)
+    try:
+        cursor.execute(query, values)
+        conn.commit()
+    except (Exception, psycopg2.Error) as error:
+        print(f'Error: {error}')
+        conn.close()
+        return False
+
+    cursor.close()
+    conn.close()
+    return True
+
+
 def read_long_url(short_code):
     conn = connect()
     if conn is None:
         return False
 
     cursor = conn.cursor()
-    query = 'SELECT long_url FROM url where short_code = %s'
+    query = 'SELECT long_url,click FROM url where short_code = %s'
     values = (short_code,)
     try:
         cursor.execute(query, values)
@@ -127,7 +148,7 @@ def read_all(uid):
         return False
 
     cursor = conn.cursor()
-    query = 'SELECT long_url,short_code FROM url where uid = %s ORDER BY expiration DESC'
+    query = 'SELECT long_url,short_code,created_on,click,expired FROM url where uid = %s ORDER BY created_on DESC'
     values = (uid,)
     try:
         cursor.execute(query, values)
