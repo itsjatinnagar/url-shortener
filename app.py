@@ -3,7 +3,7 @@ import os
 from flask import Flask, jsonify, redirect, render_template, request, session, url_for
 
 from model.helpers import email_auth_code, generate_auth_code, generate_short_code
-from model.sql import insertURL, insertUser, read_all, read_long_url, read_user_id
+from model.sql import insertURL, insertUser, read_all, read_long_url, read_user_id, updateClickCount
 from model.validators import validateAuthCode, validateEmail, validateURL
 
 app = Flask(__name__, static_folder='assets')
@@ -93,8 +93,9 @@ def shorten():
 
 @app.route('/<short_code>')
 def redirection(short_code):
-    long_url = read_long_url(short_code)
-    if long_url is None:
+    result = read_long_url(short_code)
+    if result is None:
         return redirect(url_for('index'))
 
-    return redirect(long_url[0])
+    updateClickCount(short_code, result[1])
+    return redirect(result[0])
