@@ -85,10 +85,20 @@
     <main class="container main-section">
         <section id="links-wrapper">
             {% for record in url_list %}
-            <div class="link-wrapper">
-                <p class="long-link">{{record[0]}}</p>
-                <p class="short-link">{{host+record[1]}}</p>
-                <button id="copy-btn" class="btn copy-btn">Copy</button>
+            <div class={{"link-wrapper expired" if record[4] else "link-wrapper" }}>
+                <button id="accordion-btn" class="accordion-btn"><i class="fa-solid fa-chevron-down"></i></button>
+                <div class="url-header">
+                    <p class="long-url">{{record[0]}}</p>
+                    <p class="mini-url"><a href="{{host+record[1]}}" target="_blank">{{host+record[1]}}</a></p>
+                </div>
+                <div class="url-info">
+                    <p><strong><i class="fa-solid fa-clock"></i> Created On:- </strong><span
+                            class="created-on">{{record[2]}}</span>
+                    </p>
+                    <p><strong><i class="fa-solid fa-chart-simple"></i> Total Clicks:- </strong><span
+                            class="clicks">{{record[3]}}</span></p>
+                </div>
+                <div class="btn-wrapper"><button class="btn copy-btn">Copy MiniUrl</button></div>
             </div>
             {% endfor %}
         </section>
