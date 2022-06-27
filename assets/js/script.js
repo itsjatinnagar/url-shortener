@@ -1,5 +1,4 @@
 const linksWrapper = document.getElementById("links-wrapper"),
-    linkWrappers = document.getElementsByClassName("link-wrapper"),
     popup = document.getElementById("popup"),
     popupIcon = document.querySelector("#popup #icon i"),
     popupMessage = document.querySelector("#popup #message"),
@@ -93,21 +92,27 @@ const createCardElement = (long_url, short_url) => {
     copyToClipboard();
 };
 
-const copyToClipboard = () => {
+const copyToClipboard = (cardElement) => {
+    const copyBtn = cardElement.querySelector(".copy-btn");
+    copyBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(
+            cardElement.querySelector(".mini-url").innerText
+        );
+
+        copyBtn.innerText = "Copied!";
+        copyBtn.classList.add("active");
+
+        setTimeout(() => {
+            copyBtn.innerText = "Copy MiniUrl";
+            copyBtn.classList.remove("active");
+        }, 3000);
+    });
+};
+
+const traverseLinkWrappers = () => {
+    const linkWrappers = document.getElementsByClassName("link-wrapper");
     for (const wrapper of linkWrappers) {
-        // Copy: Short url to Clipboard
-        const copyBtn = wrapper.children[2];
-        copyBtn.addEventListener("click", () => {
-            navigator.clipboard.writeText(wrapper.children[1].innerText);
-
-            copyBtn.innerText = "Copied!";
-            copyBtn.classList.add("active");
-
-            setTimeout(() => {
-                copyBtn.innerText = "Copy";
-                copyBtn.classList.remove("active");
-            }, 3000);
-        });
+        copyToClipboard(wrapper);
     }
 };
 
@@ -174,6 +179,6 @@ const setFooter = () => {
 
 window.addEventListener("DOMContentLoaded", () => {
     setFooter();
-    copyToClipboard();
+    traverseLinkWrappers();
     accordion();
 });
