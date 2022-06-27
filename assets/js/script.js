@@ -56,6 +56,22 @@ const popupToggle = (className, iconClass, message) => {
     }, 4000);
 };
 
+const accordion = () => {
+    const accordionButtons = document.querySelectorAll(
+        "#links-wrapper #accordion-btn"
+    );
+
+    accordionButtons.forEach((accordionBtn) => {
+        accordionBtn.addEventListener("click", (e) => {
+            accordionButtons.forEach((accordionBtn) => {
+                if (e.currentTarget === accordionBtn)
+                    accordionBtn.parentElement.classList.toggle("active");
+                else accordionBtn.parentElement.classList.remove("active");
+            });
+        });
+    });
+};
+
 const createCardElement = (long_url, short_url) => {
     const linkWrapperDiv = document.createElement("div");
     linkWrapperDiv.classList.add("link-wrapper");
@@ -158,4 +174,5 @@ const setFooter = () => {
 window.addEventListener("DOMContentLoaded", () => {
     setFooter();
     copyToClipboard();
+    accordion();
 });
