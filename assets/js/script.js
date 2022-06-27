@@ -49,11 +49,12 @@ const popupToggle = (className, iconClass, message) => {
 
     setTimeout(() => {
         popup.classList.remove(className);
-        popup.addEventListener("transitionend", () => {
-            popupIcon.classList.remove(iconClass);
-            popupMessage.textContent = "";
-        });
     }, 4000);
+
+    setTimeout(() => {
+        popupIcon.classList.remove(iconClass);
+        popupMessage.textContent = "";
+    }, 4400);
 };
 
 const accordion = () => {
