@@ -69,24 +69,68 @@ const accordion = (accordionBtn) => {
     });
 };
 
-const createCardElement = (long_url, short_url) => {
+const createCardElement = (long_url, short_url, datetime, clicks) => {
     const linkWrapperDiv = document.createElement("div");
-    linkWrapperDiv.classList.add("link-wrapper");
+    linkWrapperDiv.className = "link-wrapper";
+
+    const accordionBtn = document.createElement("button");
+    accordionBtn.id = "accordion-btn";
+    accordionBtn.className = "accordion-btn";
+    const faIcon = document.createElement("i");
+    faIcon.className = "fa-solid fa-chevron-down";
+    accordionBtn.append(faIcon);
+
+    const headerDiv = document.createElement("div");
+    headerDiv.className = "url-header";
     const paraLongUrl = document.createElement("p");
-    paraLongUrl.classList.add("long-link");
+    paraLongUrl.className = "long-url";
     paraLongUrl.innerText = long_url;
     const paraShortUrl = document.createElement("p");
-    paraShortUrl.classList.add("short-link");
-    paraShortUrl.innerText = window.location.origin + "/" + short_url;
-    const btn = document.createElement("button");
-    btn.classList.add(...["btn", "copy-btn"]);
-    btn.innerText = "Copy";
+    paraShortUrl.className = "mini-url";
+    const link = document.createElement("a");
+    link.setAttribute("href", short_url);
+    link.setAttribute("target", "_blank");
+    link.innerText = window.location.origin + "/" + short_url;
+    paraShortUrl.append(link);
+    headerDiv.append(...[paraLongUrl, paraShortUrl]);
 
-    linkWrapperDiv.append(...[paraLongUrl, paraShortUrl, btn]);
+    const infoDiv = document.createElement("div");
+    infoDiv.className = "url-info";
+    const paraDatetime = document.createElement("p");
+    const strongDatetime = document.createElement("strong");
+    const faClock = document.createElement("i");
+    faClock.className = "fa-solid fa-clock";
+    strongDatetime.append(faClock);
+    strongDatetime.innerText = " Created On:- ";
+    const spanDatetime = document.createElement("span");
+    spanDatetime.className = "created-on";
+    spanDatetime.innerText = datetime;
+    paraDatetime.append(...[strongDatetime, spanDatetime]);
+    const paraClicks = document.createElement("p");
+    const strongClicks = document.createElement("strong");
+    const faChart = document.createElement("i");
+    faChart.className = "fa-solid fa-chart-simple";
+    strongClicks.append(faChart);
+    strongClicks.innerText = " Total Clicks:- ";
+    const spanClicks = document.createElement("span");
+    spanClicks.className = "clicks";
+    spanClicks.innerText = clicks;
+    paraClicks.append(...[strongClicks, spanClicks]);
+    infoDiv.append(...[paraDatetime, paraClicks]);
+
+    const btnWrapper = document.createElement("div");
+    btnWrapper.className = "btn-wrapper";
+    const btn = document.createElement("button");
+    btn.className = "btn copy-btn";
+    btn.innerText = "Copy MiniUrl";
+    btnWrapper.append(btn);
+
+    linkWrapperDiv.append(...[accordionBtn, headerDiv, infoDiv, btnWrapper]);
 
     linksWrapper.insertBefore(linkWrapperDiv, linksWrapper.children[0]);
 
-    copyToClipboard();
+    accordion(accordionBtn);
+    copyToClipboard(linkWrapperDiv);
 };
 
 const copyToClipboard = (cardElement) => {
