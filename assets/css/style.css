@@ -309,6 +309,11 @@ body {
     line-height: normal;
 }
 
+.link-wrapper.expired {
+    background-color: #d5d5d5;
+    text-decoration: line-through;
+}
+
 .accordion-btn {
     position: absolute;
     top: 2rem;

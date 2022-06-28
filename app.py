@@ -86,7 +86,7 @@ def shorten():
         if isSuccess is False:
             return jsonify(status=500, message='Something Went Wrong')
         else:
-            return jsonify(status=200, message='URL Shortened Successfully', long_url=long_url, short_url=short_code)
+            return jsonify(status=200, message='URL Shortened Successfully', long_url=long_url, short_url=short_code, date_time=date, clicks=0)
     else:
         return jsonify(status=400, message=validate)
 

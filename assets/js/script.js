@@ -184,6 +184,8 @@ form.addEventListener("submit", async (e) => {
         urlObject = {
             long_url: response.long_url,
             short_url: response.short_url,
+            date_time: response.date_time,
+            clicks: response.clicks,
         };
         isShortened = checkResponse(response, urlFieldWrapper);
     } else {
@@ -206,7 +208,12 @@ form.addEventListener("submit", async (e) => {
     if (isShortened) {
         setTimeout(() => {
             urlInput.value = "";
-            createCardElement(urlObject["long_url"], urlObject["short_url"]);
+            createCardElement(
+                urlObject["long_url"],
+                urlObject["short_url"],
+                urlObject["date_time"],
+                urlObject["clicks"]
+            );
         }, 1000);
     }
     submitBtn.removeAttribute("disabled");
