@@ -56,18 +56,15 @@ const popupToggle = (className, iconClass, message) => {
     }, 4400);
 };
 
-const accordion = () => {
+const accordion = (accordionBtn) => {
     const accordionButtons = document.querySelectorAll(
         "#links-wrapper #accordion-btn"
     );
-
-    accordionButtons.forEach((accordionBtn) => {
-        accordionBtn.addEventListener("click", (e) => {
-            accordionButtons.forEach((accordionBtn) => {
-                if (e.currentTarget === accordionBtn)
-                    accordionBtn.parentElement.classList.toggle("active");
-                else accordionBtn.parentElement.classList.remove("active");
-            });
+    accordionBtn.addEventListener("click", (e) => {
+        accordionButtons.forEach((accordionBtn) => {
+            if (e.currentTarget === accordionBtn)
+                accordionBtn.parentElement.classList.toggle("active");
+            else accordionBtn.parentElement.classList.remove("active");
         });
     });
 };
@@ -112,6 +109,7 @@ const copyToClipboard = (cardElement) => {
 const traverseLinkWrappers = () => {
     const linkWrappers = document.getElementsByClassName("link-wrapper");
     for (const wrapper of linkWrappers) {
+        accordion(wrapper.querySelector("#accordion-btn"));
         copyToClipboard(wrapper);
     }
 };
@@ -180,5 +178,4 @@ const setFooter = () => {
 window.addEventListener("DOMContentLoaded", () => {
     setFooter();
     traverseLinkWrappers();
-    accordion();
 });
